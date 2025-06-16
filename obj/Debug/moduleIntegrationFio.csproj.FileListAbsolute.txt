@@ -1,0 +1,16 @@
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\obj\Debug\moduleIntegrationFio.csproj.AssemblyReference.cache
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\obj\Debug\MainWindow.g.cs
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\obj\Debug\App.g.cs
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\obj\Debug\moduleIntegrationFio_MarkupCompile.cache
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\obj\Debug\moduleIntegrationFio_MarkupCompile.lref
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\bin\Debug\moduleIntegrationFio.exe.config
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\bin\Debug\moduleIntegrationFio.exe
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\bin\Debug\moduleIntegrationFio.pdb
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\obj\Debug\moduleIntegrationFio.csproj.ResolveComReference.cache
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\obj\Debug\MainWindow.baml
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\obj\Debug\moduleIntegrationFio.g.resources
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\obj\Debug\moduleIntegrationFio.Properties.Resources.resources
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\obj\Debug\moduleIntegrationFio.csproj.GenerateResource.cache
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\obj\Debug\moduleIntegrationFio.csproj.CoreCompileInputs.cache
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\obj\Debug\moduleIntegrationFio.exe
+C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\obj\Debug\moduleIntegrationFio.pdb
