@@ -54,23 +54,41 @@ namespace moduleIntegrationFio
             string filePath = @"C:\Users\Edemskaya.as\source\repos\moduleIntegrationFio\ТестКейс.docx";
             string lastName = DataTextBlock.Text.Trim();
 
-            // Проверка валидности фамилии
-            bool isValid = Regex.IsMatch(lastName, @"^[a-zA-Zа-яА-ЯёЁ\s]+$");
+            // Проверка валидности и извлечение лишних символов
+            var (isValid, invalidChars) = ValidateLastName(lastName);
             string validationResult = isValid ? "успешно" : "не успешно";
 
             try
             {
                 WordWritter wordWritter = new WordWritter();
-                wordWritter.WriteToWordTable(filePath, 1, lastName, validationResult);
+                wordWritter.WriteToWordTable(filePath, 1, lastName, invalidChars, validationResult);
 
                 ResultTextBlock.Text = isValid
                     ? "Данные успешно записаны в таблицу!"
-                    : "Данные записаны с пометкой 'не успешно'!";
+                    : $"Обнаружены недопустимые символы: {invalidChars}";
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка: {ex.Message}");
             }
+        }
+
+        private (bool isValid, string invalidChars) ValidateLastName(string lastName)
+        {
+            // Допустимые символы: буквы и пробелы
+            var regex = new Regex(@"[^a-zA-Zа-яА-ЯёЁ\s]");
+            var invalidMatches = regex.Matches(lastName);
+
+            if (invalidMatches.Count == 0)
+                return (true, "");
+
+            // Собираем все уникальные недопустимые символы
+            var invalidChars = string.Join(" ", invalidMatches
+                .Cast<Match>()
+                .Select(m => m.Value)
+                .Distinct());
+
+            return (false, invalidChars);
         }
     }
 }

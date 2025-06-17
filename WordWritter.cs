@@ -10,7 +10,7 @@ namespace moduleIntegrationFio
 {
     public class WordWritter
     {
-        public void WriteToWordTable(string filePath, int tableIndex, string lastName, string validationResult)
+        public void WriteToWordTable(string filePath, int tableIndex, string lastName, string invalidChars, string validationResult)
         {
             Word.Application wordApp = null;
             Word.Document wordDoc = null;
@@ -23,18 +23,19 @@ namespace moduleIntegrationFio
                 wordDoc = wordApp.Documents.Open(filePath);
                 Word.Table table = wordDoc.Tables[tableIndex];
 
-                // Находим первую полностью пустую строку
+                // Находим первую пустую строку
                 int targetRow = FindFirstEmptyRow(table);
 
-                // Если все строки заполнены, добавляем новую
+                // Добавляем новую строку если нужно
                 if (targetRow > table.Rows.Count)
                 {
                     table.Rows.Add();
                 }
 
-                // Записываем данные в одну строку
-                table.Cell(targetRow, 1).Range.Text = lastName;      // 1-й столбец - фамилия
-                table.Cell(targetRow, 3).Range.Text = validationResult; // 3-й столбец - результат
+                // Заполняем все три столбца
+                table.Cell(targetRow, 1).Range.Text = lastName;          // 1-й столбец - фамилия
+                table.Cell(targetRow, 2).Range.Text = invalidChars;      // 2-й столбец - лишние символы
+                table.Cell(targetRow, 3).Range.Text = validationResult;  // 3-й столбец - результат
 
                 wordDoc.Save();
                 MessageBox.Show("Данные успешно записаны в таблицу!");
@@ -53,17 +54,17 @@ namespace moduleIntegrationFio
 
         private int FindFirstEmptyRow(Word.Table table)
         {
-            // Проверяем строки начиная с 3-й (как в вашем оригинальном коде)
+            // Ищем первую строку, где все три столбца пусты
             for (int row = 3; row <= table.Rows.Count; row++)
             {
-                // Считаем строку пустой, если оба столбца пусты
                 if (string.IsNullOrWhiteSpace(table.Cell(row, 1).Range.Text) &&
+                    string.IsNullOrWhiteSpace(table.Cell(row, 2).Range.Text) &&
                     string.IsNullOrWhiteSpace(table.Cell(row, 3).Range.Text))
                 {
                     return row;
                 }
             }
-            return table.Rows.Count + 1; // Возвращаем следующую после последней
+            return table.Rows.Count + 1;
         }
     }
 }
